@@ -9,6 +9,7 @@ Los mapas de vulnerabilidad social pueden ser utilizados para mejorar la gestió
 
 En este trabajo se presenta una metodología para la construcción de un índice de vulnerabilidad social a escala local, 
 utilizando la técnica estadística de análisis de componentes principales en un sistema de información geográfica. 
+
 Como caso de aplicación se analizaron los datos censales de la República Argentina. 
 A partir de las variables incluidas en el censo nacional, se construyeron 19 indicadores descriptivos, 
 los cuales se sintetizaron en un único índice que permitió categorizar todo el territorio a nivel de radio censal. 
