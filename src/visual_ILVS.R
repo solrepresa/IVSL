@@ -4,12 +4,15 @@
 
 
 # Objetivo: visualizar los ILVS
+# Por problema de tamaño del file, este archivo solo trabaja con Prov. de Bs As.
 
 library(leaflet)
 library(maptools)
+library(mapview) #guardar mapas
 
 
-ILVS <- readShapePoly("ILVS_wgs84.shp") ## Carga de puntos para extraer la info
+
+ILVS <- readShapePoly("ILVS_BsAsCABA.shp") ## Carga de puntos para extraer la info
 proj4string(ILVS) <- CRS("+proj=longlat +ellps=WGS84 +no_defs") # Asignar proyeccion
 slot(ILVS, "data") <- data.frame(Id = ILVS@data$link, ILVS = ILVS@data$IVSL_t, ILVS_cat = ILVS@data$cat_VS) # Asigno variables de inter?s (o quito el resto)
 
@@ -55,5 +58,4 @@ m  <- m %>% addLegend(pal = pal,
               position = "bottomright")
 
 
-library(mapview)
-mapshot(m, file= "m.html", selfcontained = FALSE)
+mapshot(m, file= "mapa_IVSL.html", selfcontained = FALSE)
