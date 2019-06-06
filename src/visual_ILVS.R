@@ -12,50 +12,67 @@ library(mapview) #guardar mapas
 
 
 
-ILVS <- readShapePoly("ILVS_BsAsCABA.shp") ## Carga de puntos para extraer la info
+# # # # # # # # # # # # # # # # # # # # 
+
+## 1) Cargamos datos
+
+# # # # # # # # # # # # # # # # # # # # 
+
+ILVS <- readShapePoly("ILVS_BsAsCABA.shp") # Carga shp
 proj4string(ILVS) <- CRS("+proj=longlat +ellps=WGS84 +no_defs") # Asignar proyeccion
-slot(ILVS, "data") <- data.frame(Id = ILVS@data$link, ILVS = ILVS@data$IVSL_t, ILVS_cat = ILVS@data$cat_VS) # Asigno variables de inter?s (o quito el resto)
+slot(ILVS, "data") <- data.frame(Id = ILVS@data$link, 
+                                 ILVS = ILVS@data$IVSL_t, 
+                                 ILVS_cat = ILVS@data$cat_VS) # Variables de interes
 
 
-## Mapa leaflet ##
 
-# Colores
+# # # # # # # # # # # # # # # # # # # # 
+
+## 2) Armamos mapa con leaflet ##
+
+# # # # # # # # # # # # # # # # # # # # 
+
+
+# Colores: por categoria de ILVS
 bins <- c(0, 1, 2, 3, 4, 5)
 pal <- colorBin("YlOrRd", domain = ILVS$ILVS_cat, bins = bins)
 
-#Label
+
+# Label: armadas en HTML
 labels <- sprintf(
   "<strong>Radio censal <br/> %s </strong> <br/> ILVS %g ",
   ILVS$Id, ILVS$ILVS_cat
 ) %>% lapply(htmltools::HTML)
 
 
+# Mapa base
 m <- leaflet(data = ILVS ) %>%
-  addProviderTiles("Esri.WorldGrayCanvas", 
-                   options = tileOptions(minZoom=5, maxZoom=7)) %>%
-  addMiniMap(position = "bottomright") 
+  addProviderTiles("Esri.WorldGrayCanvas",   # mapa base
+                   options = tileOptions(minZoom = 1, maxZoom = 15)) %>%
+  addMiniMap(position = "bottomleft")     # mini mapa
 
 m <- m %>% addPolygons(fillColor = ~pal(ILVS_cat),
-              stroke = FALSE, 
+              weight = 1,
               smoothFactor = 0.3, 
               fillOpacity = 0.7,
-              highlight = highlightOptions(
+              color = "white",
+              highlight = highlightOptions(    # resalta la seleccion
                 weight = 5, 
                 bringToFront = TRUE, 
                 opacity = 1,
                 color = "#666"),
-              label = labels,
+              label = labels,   # agrega etiquetas
               labelOptions = labelOptions(
                 style = list("font-weight" = "normal", padding = "3px 8px"),
                 textsize = "15px",
                 direction = "auto")
               )
 
-m  <- m %>% addLegend(pal = pal, 
+m  <- m %>% addLegend(pal = pal, #agrega leyenda
               values = ~ILVS_cat, 
               opacity = 0.7, 
               title = "ILVS",
               position = "bottomright")
 
 
-mapshot(m, file= "mapa_IVSL.html", selfcontained = FALSE)
+mapshot(m, url = paste0(getwd(), "/map_IVSL.html"), selfcontained = FALSE)
