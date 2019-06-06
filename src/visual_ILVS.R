@@ -41,8 +41,8 @@ pal <- colorBin("YlOrRd", domain = ILVS$ILVS_cat, bins = bins)
 # Label: armadas en HTML
 labels <- sprintf(
   "<strong> Radio censal <br/> %s </strong> <br/> ILVS %g ",
-  ILVS$Id, ILVS$ILVS_cat
-) %>% lapply(htmltools::HTML)
+  ILVS$Id, ILVS$ILVS_cat) %>% 
+lapply(htmltools::HTML)
 
 
 # Mapa base
