@@ -4,7 +4,7 @@
 
 
 # Objetivo: visualizar los ILVS
-# Por problema de tamaño del file, este archivo solo trabaja con Prov. de Bs As.
+# Por problema de tamaño del file, este archivo solo trabaja con CABA.
 
 library(leaflet)
 library(maptools)
