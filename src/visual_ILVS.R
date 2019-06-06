@@ -18,7 +18,7 @@ library(mapview) #guardar mapas
 
 # # # # # # # # # # # # # # # # # # # # 
 
-ILVS <- readShapePoly("ILVS_BsAsCABA.shp") # Carga shp
+ILVS <- readShapePoly("CABA.shp") # Carga shp
 proj4string(ILVS) <- CRS("+proj=longlat +ellps=WGS84 +no_defs") # Asignar proyeccion
 slot(ILVS, "data") <- data.frame(Id = ILVS@data$link, 
                                  ILVS = ILVS@data$IVSL_t, 
@@ -40,7 +40,7 @@ pal <- colorBin("YlOrRd", domain = ILVS$ILVS_cat, bins = bins)
 
 # Label: armadas en HTML
 labels <- sprintf(
-  "<strong>Radio censal <br/> %s </strong> <br/> ILVS %g ",
+  "<strong> Radio censal <br/> %s </strong> <br/> ILVS %g ",
   ILVS$Id, ILVS$ILVS_cat
 ) %>% lapply(htmltools::HTML)
 
@@ -75,4 +75,4 @@ m  <- m %>% addLegend(pal = pal, #agrega leyenda
               position = "bottomright")
 
 
-mapshot(m, url = paste0(getwd(), "/map_IVSL.html"), selfcontained = FALSE)
+mapshot(m, url = paste0(getwd(), "/map_IVSL_CABA.html"), selfcontained = FALSE)
