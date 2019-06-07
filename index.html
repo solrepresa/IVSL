@@ -13,7 +13,7 @@
   </head>
   
   <body>
-    <div id="app">
+    <div id="app"> <!-- Necesario para q se compile la web -->
     
     <!-- Contenedor de la web -->
     <b-container>
@@ -60,22 +60,22 @@
 
     </b-container> 
 
-          </div>
+          </div> <!-- Cierre del id = "app" - Necesario para q se compile la web -->
 
-<!-- Start running your app -->
-    <script>
-      window.app = new Vue({
-        el: "#app",
-        data: {
-          name: ''
-        },
-        computed: {
-          showAlert() {
-            return this.name.length > 4 ? true : false;
-          }
-        }
-      })
-    </script>
-    
+          <!-- Bloque necesario agregar - Start running your app - sin esto no compilaba -->
+          <script>
+            window.app = new Vue({
+              el: "#app",
+              data: {
+                name: ''
+              },
+              computed: {
+                showAlert() {
+                  return this.name.length > 4 ? true : false;
+                }
+              }
+            })
+          </script>
+
   </body>
 </html>
