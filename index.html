@@ -16,17 +16,17 @@
     <!-- Contenedor de la web -->
 
     <b-container>
+<div>
+  <b-jumbotron>
+    <template slot="header">Indice de Vulnerabilidad Social Local (IVSL)</template>
 
-      <div>
-  <b-jumbotron header="Indice de Vulnerabilidad Social Local (IVSL)" lead="Resumen">
-    
-    <p>
-    El diagnóstico de la vulnerabilidad social es una parte central en los procesos de mitigación y adaptación del riesgo. 
-    Los mapas de vulnerabilidad social pueden ser utilizados para mejorar la gestión territorial y la planificación del desarrollo. 
-    </p>
-    <br>
-    
-    <p>
+    <template slot="lead">
+      Resumen
+    </template>
+
+    <hr class="my-4">
+
+ <p>
     En este trabajo se presenta una metodología para la construcción de un índice de vulnerabilidad social a escala local, 
     utilizando la técnica estadística de análisis de componentes principales en un sistema de información geográfica. 
     </p>
@@ -45,26 +45,17 @@
     En contraposición, la región pampeana, patagónica y la capital de Argentina presentaron los índices más bajos.
     </p>
     <br>
-    <br>
-    <br>
 
-    <b-button variant="primary" href="map_IVSL_CABA.html">Ver Mapa</b-button>
-    
-    <br>
-    <br>
-    <br>
-    
     <div>
-    <h4>Citar como:</h2>
+    <h6>Citar como:</h6>
     </div>
-    <br>
+    <p>
     Represa, N. S., Sanchez, Y., & Porta, A. (2019). Estudio de la Vulnerabilidad Social en Argentina Mediante el Uso de SIG. Construcción de un Índice de Aplicación Local. Anuário do Instituto de Geociências, 41(2), 351-357.
-
+    </p>
+    <b-button variant="success" href="map_IVSL_CABA.html">Ver mapa</b-button>
 
   </b-jumbotron>
 </div>
-
-       
 
     </b-container> 
 
