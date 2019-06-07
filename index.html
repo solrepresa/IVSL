@@ -2,6 +2,7 @@
   <head>
     <title> Indice de Vulnerabilidad Social Local (IVSL) </title>
     <meta name = "Description" content = "Local Vulnerability Social Index" >
+    
     <!-- VER: https://bootstrap-vue.js.org/docs/components/ -->
     <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
@@ -12,52 +13,69 @@
   </head>
   
   <body>
+    <div id="app">
     
     <!-- Contenedor de la web -->
-
     <b-container>
-<div>
-  <b-jumbotron>
-    <template slot="header">Indice de Vulnerabilidad Social Local (IVSL)</template>
+      <div>
+        <b-jumbotron>
+          <template slot="header">Indice de Vulnerabilidad Social Local (IVSL)</template>
 
-    <template slot="lead">
-      Resumen
-    </template>
+          <template slot="lead">
+            Resumen
+          </template>
 
-    <hr class="my-4">
+          <hr class="my-4">
 
- <p>
-    En este trabajo se presenta una metodología para la construcción de un índice de vulnerabilidad social a escala local, 
-    utilizando la técnica estadística de análisis de componentes principales en un sistema de información geográfica. 
-    </p>
-    <br>
-    
-    <p>
-    Como caso de aplicación se analizaron los datos censales de la República Argentina. 
-    A partir de las variables incluidas en el censo nacional, se construyeron 19 indicadores descriptivos, 
-    los cuales se sintetizaron en un único índice que permitió categorizar todo el territorio a nivel de radio censal. 
-    </p>
-    <br>
-    
-    <p>
-    La clasificación empleada resultó útil para discriminar los radios censales con condiciones extremas de vulnerabilidad social. 
-    Con algunas excepciones, se observó una mayor vulnerabilidad social en el sector oeste y norte del país. 
-    En contraposición, la región pampeana, patagónica y la capital de Argentina presentaron los índices más bajos.
-    </p>
-    <br>
+          <p>
+          En este trabajo se presenta una metodología para la construcción de un índice de vulnerabilidad social a escala local, 
+          utilizando la técnica estadística de análisis de componentes principales en un sistema de información geográfica. 
+          </p>
+          <br>
 
-    <div>
-    <h6>Citar como:</h6>
-    </div>
-    <p>
-    Represa, N. S., Sanchez, Y., & Porta, A. (2019). Estudio de la Vulnerabilidad Social en Argentina Mediante el Uso de SIG. Construcción de un Índice de Aplicación Local. Anuário do Instituto de Geociências, 41(2), 351-357.
-    </p>
-    <b-button variant="success" href="map_IVSL_CABA.html">Ver mapa</b-button>
+          <p>
+          Como caso de aplicación se analizaron los datos censales de la República Argentina. 
+          A partir de las variables incluidas en el censo nacional, se construyeron 19 indicadores descriptivos, 
+          los cuales se sintetizaron en un único índice que permitió categorizar todo el territorio a nivel de radio censal. 
+          </p>
+          <br>
 
-  </b-jumbotron>
-</div>
+          <p>
+          La clasificación empleada resultó útil para discriminar los radios censales con condiciones extremas de vulnerabilidad social. 
+          Con algunas excepciones, se observó una mayor vulnerabilidad social en el sector oeste y norte del país. 
+          En contraposición, la región pampeana, patagónica y la capital de Argentina presentaron los índices más bajos.
+          </p>
+          <br>
+
+          <div>
+          <h6>Citar como:</h6>
+          </div>
+          <p>
+          Represa, N. S., Sanchez, Y., & Porta, A. (2019). Estudio de la Vulnerabilidad Social en Argentina Mediante el Uso de SIG. Construcción de un Índice de Aplicación Local. Anuário do Instituto de Geociências, 41(2), 351-357.
+          </p>
+          <b-button variant="success" href="map_IVSL_CABA.html">Ver mapa</b-button>
+
+        </b-jumbotron>
+      </div>
 
     </b-container> 
 
+          </div>
+
+<!-- Start running your app -->
+    <script>
+      window.app = new Vue({
+        el: "#app",
+        data: {
+          name: ''
+        },
+        computed: {
+          showAlert() {
+            return this.name.length > 4 ? true : false;
+          }
+        }
+      })
+    </script>
+    
   </body>
 </html>
